@@ -33,8 +33,8 @@ sudo sed -i 's/CONF_SWAPSIZE=1024/CONF_SWAPSIZE=100/g' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile stop
 sudo /etc/init.d/dphys-swapfile start
 
-#for i in "$@"; do
-#	if [ $i == "-auto" ] || [ $i == "-install" ]; then
-#		./rasp_opencv.sh $*
-#	fi
-#done
+for i in "$@"; do
+	if [ $i == "-auto" ] || [ $i == "-install" ]; then
+		./rasp_opencv.sh $*
+	fi
+done
