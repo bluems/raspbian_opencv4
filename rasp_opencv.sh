@@ -8,6 +8,21 @@ else
 	mkdir ${HOME}/opencv4
 	cd ${HOME}/opencv4
 
+	CV_VERSION=${1}
+
+	if [ $CV_VERSION == "latest" ]; then
+		#pip install virtualenv
+		#virtualenv venv
+		#./venv/Scripts/pip install -r requirements.txt
+		#CV_VERSION=$(./venv/Scripts/python check_latest.py)
+		CV_VERSION=$(python3 check_latest.py)
+	fi
+
+	if ! [[ $CV_VERSION =~ ^[0-9]\.[0-9]\.[0-9]$ ]]; then
+		echo "Wrong version. Exit"
+		exit(-1)
+	fi
+
 	wget -O opencv.zip https://github.com/opencv/opencv/archive/${1}.zip
 	wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${1}.zip
 
